@@ -40,7 +40,6 @@
 
 #include <iostream>
 #include <vector>
-#include <climits>
 
 using namespace std;
 
@@ -55,7 +54,6 @@ std::vector<bool> sieve_of_eratosthenes( unsigned long int const n_length )
     	j = 0;
     	count = 0;
     	if(primeList[i] == 0) {
-    		cout << i << endl;
     		while(j <= n_length) {
     			j = i * i + i * count;
     			primeList[j] = 1;
@@ -63,14 +61,11 @@ std::vector<bool> sieve_of_eratosthenes( unsigned long int const n_length )
     		}
     	}
     }
-    for(int k = 0; k <= n_length; k++)
-    	if(primeList[k] == 0) cout << k << endl;
     return primeList;
 }
 
 int main(void)
 {
-	unsigned long int MAX = ULONG_MAX;
 	std::vector<bool> const primeList = sieve_of_eratosthenes( 1000000000 );
 	int NumberOfTests = 0;
 	int upper, lower;
@@ -79,23 +74,9 @@ int main(void)
 	{
 		//Read in in two integers and find all the primes between them. 
 		cin >> lower >> upper;
-		cout << lower << '\t' << upper << endl;
-		// sqrt(1000000000) = 31622
-		// create an boolean array [0,1000000000]initial to all true;
-		// set 0,1 to false;
-		
-		// Input: an integer n > 1
- 
-		// Let A be an array of Boolean values, indexed by integers 2 to n,
-		// initially all set to true.
-		//  
-		//  for i = 2, 3, 4, ..., not exceeding √n:
-		//   if A[i] is true:
-		//     for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n :
-		//       A[j] := false
-		//  
-		// Output: all i such that A[i] is true.
-
+		for(int i = lower; i <= upper; i++)
+			if(primeList[i] == 0)
+				cout << i << endl;
 	}
-	cout << MAX << endl;
+	cout << endl;
 }
