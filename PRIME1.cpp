@@ -47,11 +47,24 @@ using namespace std;
 std::vector<bool> sieve_of_eratosthenes( unsigned long int const n_length )
 {
     std::vector<bool> primeList(n_length);
+    unsigned long int j = 0;
+    int count = 0;
     primeList[0] = 1;
     primeList[1] = 1;
     for(unsigned long int i = 2; i <= 31622; i++) {
-    	primeList[i] = 1;
+    	j = 0;
+    	count = 0;
+    	if(primeList[i] == 0) {
+    		cout << i << endl;
+    		while(j <= n_length) {
+    			j = i * i + i * count;
+    			primeList[j] = 1;
+    			count++;
+    		}
+    	}
     }
+    for(int k = 0; k <= n_length; k++)
+    	if(primeList[k] == 0) cout << k << endl;
     return primeList;
 }
 
