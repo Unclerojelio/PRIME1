@@ -31,3 +31,4 @@ Information
 
 After cluster change, please consider PRINT as a more challenging problem.
 
+Solution: segmented sieve
